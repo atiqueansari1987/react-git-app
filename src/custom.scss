@@ -1,0 +1,18 @@
+// Override default variables before the import
+// $body-bg: papayawhip;
+
+// $theme-colors: (
+//   'primary': #0074d9,
+//   'dark': #ff4136
+// );
+
+.top-buffer {
+  margin-top: 20px;
+}
+
+.middle-buffer {
+  margin-top: 50px;
+}
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';

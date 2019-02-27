@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { observer, inject } from 'mobx-react';
+import { compose } from 'recompose';
+import { Container, Row } from 'reactstrap';
+import Header from './components/Header';
+import Organization from './components/Organization';
+import Repository from './components/Repository';
+import User from './components/User';
 
 class App extends Component {
   render() {
+    const { userDetails } = this.props.Store;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Container>
+        <Row className="top-buffer" />
+        <Header />
+        <Row className="middle-buffer" />
+        {Object.keys(userDetails).length > 0 ? (
+          <>
+            <User />
+            <Row className="middle-buffer" />
+            <Repository />
+            <Row className="middle-buffer" />
+            <Organization />
+          </>
+        ) : null}
+      </Container>
     );
   }
 }
 
-export default App;
+export default compose(
+  inject('Store'),
+  observer
+)(App);
