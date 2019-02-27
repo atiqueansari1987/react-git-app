@@ -8,7 +8,7 @@ configure({ enforceActions: 'always' });
 const GIT_BASE_URL = 'https://api.github.com';
 
 export class GitStore {
-  username = 'atiqueansari1987';
+  username = '';
   blankUsernameError = false;
   loading = false;
   apiErrorMessage = '';
@@ -73,7 +73,7 @@ export class GitStore {
   };
 }
 
-const Store = (window.Store = new GitStore());
+const Store = new GitStore();
 
 decorate(Store, {
   username: observable,
