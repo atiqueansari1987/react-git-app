@@ -24,17 +24,19 @@ export class GitStore {
     }
   };
 
-  searchUserDetails = e => {
-    if (this.username === '') {
-      this.blankUsernameError = true;
-      return;
-    }
-
-    this.blankUsernameError = false;
+  searchUserDetails = () => {
     this.apiErrorMessage = '';
     this.userDetails = {};
     this.repositories = [];
     this.organizations = [];
+
+    if (this.username === '') {
+      this.blankUsernameError = true;
+
+      return;
+    }
+
+    this.blankUsernameError = false;
     this.loading = true;
 
     // Make requests to fetch user details, repositories and organizations from GIT

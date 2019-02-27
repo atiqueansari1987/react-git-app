@@ -48,6 +48,9 @@ class Header extends Component {
                   placeholder="GIT username"
                   value={username}
                   onChange={e => updateUsername(e)}
+                  onKeyPress={({ key }) =>
+                    key === 'Enter' ? searchUserDetails() : null
+                  }
                 />
               </InputGroup>
             </Col>
@@ -55,7 +58,7 @@ class Header extends Component {
               <Button
                 color="primary"
                 size="sm"
-                onClick={e => searchUserDetails(e)}
+                onClick={() => searchUserDetails()}
               >
                 Search
               </Button>
